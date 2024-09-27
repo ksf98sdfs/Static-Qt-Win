@@ -52,7 +52,7 @@ jobs:
           -opensource ^
           -confirm-license ^
           -release ^
-          -static ^
+          -static-runtime ^
           -platform win32-msvc ^
           -mp ^
           -nomake examples ^
