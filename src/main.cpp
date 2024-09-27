@@ -1,7 +1,16 @@
-#include <iostream>
+#include <QApplication>
+#include <QPushButton>
 
-int main()
+int main(int argc, char **argv)
 {
-  std::cout << "Hello, World!" << std::endl;
-  return 0;
+ QApplication app (argc, argv);
+
+ QWidget window;
+ window.setFixedSize(100, 50);
+
+ QPushButton *button = new QPushButton("Hello World", &window);
+ button->setGeometry(10, 10, 80, 30);
+
+ window.show();
+ return app.exec();
 }
