@@ -20,7 +20,7 @@ elseif( CMAKE_SYSTEM_NAME STREQUAL "Darwin" )
 endif()
 
 # Enable static linkage of runtime on MSVC
-if ( MSVC )
+if( MSVC )
   set( CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded" )
 endif()
 
@@ -36,6 +36,9 @@ list( APPEND Qt5_DIR ${QT_DIRECTORY} )
 find_package( Qt5 REQUIRED COMPONENTS Core Gui Network Widgets )
 
 set( OPENSSL_USE_STATIC_LIBS TRUE )
+if( MSVC )
+	set( OPENSSL_MSVC_STATIC_RT TRUE )
+endif()
 find_package( OpenSSL REQUIRED )
 
 file( GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.h ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.qrc )
