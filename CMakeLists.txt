@@ -37,7 +37,13 @@ find_package( Qt5 REQUIRED COMPONENTS Core Gui Widgets )
 
 file( GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.h ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.qrc )
 
-add_executable( ${library_name} ${SRC_FILES} )
+if( CMAKE_SYSTEM_NAME STREQUAL "Windows" )
+	add_executable( ${library_name} WIN32 ${SRC_FILES} )
+elseif( CMAKE_SYSTEM_NAME STREQUAL "Linux" )
+	add_executable( ${library_name} ${SRC_FILES} )
+elseif( CMAKE_SYSTEM_NAME STREQUAL "Darwin" )
+	add_executable( ${library_name} ${SRC_FILES} )
+endif()
 
 # Set the correct Visual Studio startup project.
 if ( MSVC )
