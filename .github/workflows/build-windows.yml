@@ -20,7 +20,7 @@ jobs:
         working-directory: ${{ env.openssl_location }}
         run: |
           dir
-          dir /bin
-          dir /lib
-          dir /include
+          dir bin
+          dir include
+          dir lib
 # - uses: ilammy/msvc-dev-cmd@v1
