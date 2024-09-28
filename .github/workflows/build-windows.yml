@@ -9,20 +9,18 @@ on:
       - main
 
 env:
-  Qt_minor_version: 5.15
-  Qt_patch_version: 5.15.15
   openssl_location: C:\Program Files\OpenSSL
   sevenzip_location: C:\Program Files\7-Zip
-  BUILD_TYPE: Release
   
 jobs:
   build:
     runs-on: windows-2019
     steps:
-      - uses: ilammy/msvc-dev-cmd@v1
       - name: Check OpenSSL
+        working-directory: ${{ env.openssl_location }}
         run: |
-          dir ${{ env.openssl_location }}
-          dir ${{ env.openssl_location }}/bin
-          dir ${{ env.openssl_location }}/lib
-          dir ${{ env.openssl_location }}/include
+          dir
+          dir /bin
+          dir /lib
+          dir /include
+# - uses: ilammy/msvc-dev-cmd@v1
