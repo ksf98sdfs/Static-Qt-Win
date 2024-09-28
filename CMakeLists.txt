@@ -35,6 +35,9 @@ list( APPEND Qt5_DIR ${QT_DIRECTORY} )
 # Locate Qt's libraries and header files.
 find_package( Qt5 REQUIRED COMPONENTS Core Gui Network Widgets )
 
+set( OPENSSL_USE_STATIC_LIBS TRUE )
+find_package( OpenSSL REQUIRED )
+
 file( GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.h ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.qrc )
 
 if( CMAKE_SYSTEM_NAME STREQUAL "Windows" )
@@ -51,7 +54,7 @@ if ( MSVC )
 endif()
 
 # Link against the Qt libraries, and add required include directories and compile definitions.
-target_link_libraries( ${library_name} PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets )
+target_link_libraries( ${library_name} PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets OpenSSL::Crypto )
 
 # Include ${CMAKE_CURRENT_BINARY_DIR} for the generated header.
 target_include_directories( ${library_name} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} )
