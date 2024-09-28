@@ -57,7 +57,7 @@ if ( MSVC )
 endif()
 
 # Link against the Qt libraries, and add required include directories and compile definitions.
-target_link_libraries( ${library_name} PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets OpenSSL::Crypto )
+target_link_libraries( ${library_name} PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets OpenSSL::Crypto OpenSSL::SSL )
 
 # Include ${CMAKE_CURRENT_BINARY_DIR} for the generated header.
 target_include_directories( ${library_name} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} )
