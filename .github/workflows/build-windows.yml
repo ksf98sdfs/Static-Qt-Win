@@ -65,7 +65,7 @@ jobs:
           -no-icu ^
           -openssl-linked OPENSSL_LIBS="-lUser32 -lAdvapi32 -lGdi32 -llibcrypto -llibssl" OPENSSL_PREFIX="${{ env.openssl_location }}" ^
           -I "${{ env.openssl_location }}\include" ^
-          -L "${{ env.openssl_location }}\lib" ^
+          -L "${{ env.openssl_location }}\lib\VC\static" ^
           -L "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Lib" ^
           -no-schannel ^
           -no-securetransport ^
