@@ -63,7 +63,9 @@ jobs:
           -no-accessibility ^
           -qt-doubleconversion ^
           -no-icu ^
-          -openssl-linked OPENSSL_LIBS="-lUser32 -lAdvapi32 -lGdi32 -llibcrypto -llibssl" OPENSSL_PREFIX="${{ env.openssl_location }}" ^
+          -ssl ^
+          -openssl ^
+          -openssl-linked OPENSSL_LIBS="-lUser32 -lAdvapi32 -lGdi32 -lCrypt32" OPENSSL_PREFIX="${{ env.openssl_location }}" OPENSSL_LIBS_RELEASE="-llibcrypto64MT -llibssl64MT" ^
           -I "${{ env.openssl_location }}\include" ^
           -L "${{ env.openssl_location }}\lib\VC\static" ^
           -L "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Lib" ^
